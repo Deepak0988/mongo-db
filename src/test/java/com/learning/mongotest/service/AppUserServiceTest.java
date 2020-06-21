@@ -4,14 +4,14 @@ import com.learning.mongotest.model.AppUser;
 import com.learning.mongotest.repository.AppUserRepo;
 import com.learning.mongotest.service.impl.AppUserServiceImpl;
 import org.assertj.core.api.Assert;
+import org.junit.Before;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.junit.runner.RunWith;
+import org.mockito.*;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.test.context.event.annotation.BeforeTestClass;
 
@@ -20,7 +20,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@ExtendWith(MockitoExtension.class)
 public class AppUserServiceTest {
     @Mock
     AppUserRepo appUserRepo;
@@ -35,6 +34,9 @@ public class AppUserServiceTest {
         user.setId((long) 1);
         user.setFirstName("Deepak");
         user.setLastName("Chauhan");
+
+        MockitoAnnotations.initMocks(this);
+
     }
 
     @Test
